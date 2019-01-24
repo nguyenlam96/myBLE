@@ -8,20 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		052F5EFF21F6C1CE00ED1C9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5EFE21F6C1CE00ED1C9E /* AppDelegate.swift */; };
-		052F5F0121F6C1CE00ED1C9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F0021F6C1CE00ED1C9E /* ViewController.swift */; };
 		052F5F0421F6C1CE00ED1C9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052F5F0221F6C1CE00ED1C9E /* Main.storyboard */; };
-		052F5F0621F6C1D000ED1C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052F5F0521F6C1D000ED1C9E /* Assets.xcassets */; };
 		052F5F0921F6C1D000ED1C9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052F5F0721F6C1D000ED1C9E /* LaunchScreen.storyboard */; };
+		052F5F1621F6C37400ED1C9E /* ScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F1521F6C37400ED1C9E /* ScanVC.swift */; };
+		052F5F1821F6C37E00ED1C9E /* StatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F1721F6C37E00ED1C9E /* StatusVC.swift */; };
+		052F5F1C21F8014000ED1C9E /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F1B21F8014000ED1C9E /* Scanner.swift */; };
+		052F5F1E21F8014A00ED1C9E /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F1D21F8014A00ED1C9E /* Connector.swift */; };
+		052F5F2021F8019500ED1C9E /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F1F21F8019500ED1C9E /* Adapter.swift */; };
+		052F5F2321F803CE00ED1C9E /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F2221F803CE00ED1C9E /* DeviceStatus.swift */; };
+		052F5F2521F8071600ED1C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052F5F2421F8071600ED1C9E /* Assets.xcassets */; };
+		05C4FE0A21F80D0B00DE54D7 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4FE0921F80D0B00DE54D7 /* BLEManager.swift */; };
+		05C4FE0D21F8162E00DE54D7 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4FE0C21F8162E00DE54D7 /* Constant.swift */; };
+		05C4FE1021F818DC00DE54D7 /* LogUltils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4FE0F21F818DC00DE54D7 /* LogUltils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		052F5EFB21F6C1CE00ED1C9E /* myBLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myBLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		052F5EFE21F6C1CE00ED1C9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		052F5F0021F6C1CE00ED1C9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		052F5F0321F6C1CE00ED1C9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		052F5F0521F6C1D000ED1C9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		052F5F0821F6C1D000ED1C9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		052F5F0A21F6C1D000ED1C9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		052F5F1521F6C37400ED1C9E /* ScanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanVC.swift; sourceTree = "<group>"; };
+		052F5F1721F6C37E00ED1C9E /* StatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVC.swift; sourceTree = "<group>"; };
+		052F5F1B21F8014000ED1C9E /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		052F5F1D21F8014A00ED1C9E /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
+		052F5F1F21F8019500ED1C9E /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
+		052F5F2221F803CE00ED1C9E /* DeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatus.swift; sourceTree = "<group>"; };
+		052F5F2421F8071600ED1C9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		05C4FE0921F80D0B00DE54D7 /* BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
+		05C4FE0C21F8162E00DE54D7 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		05C4FE0F21F818DC00DE54D7 /* LogUltils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUltils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +70,70 @@
 		052F5EFD21F6C1CE00ED1C9E /* myBLE */ = {
 			isa = PBXGroup;
 			children = (
-				052F5EFE21F6C1CE00ED1C9E /* AppDelegate.swift */,
-				052F5F0021F6C1CE00ED1C9E /* ViewController.swift */,
+				05C4FE0E21F818CE00DE54D7 /* Utilities */,
+				05C4FE0B21F8162200DE54D7 /* Constant */,
+				052F5F1A21F8012D00ED1C9E /* ViewController */,
+				052F5F2121F803C000ED1C9E /* Entity */,
+				052F5F1921F8012300ED1C9E /* Services */,
+				052F5F1021F6C33200ED1C9E /* Supporting Files */,
 				052F5F0221F6C1CE00ED1C9E /* Main.storyboard */,
-				052F5F0521F6C1D000ED1C9E /* Assets.xcassets */,
-				052F5F0721F6C1D000ED1C9E /* LaunchScreen.storyboard */,
 				052F5F0A21F6C1D000ED1C9E /* Info.plist */,
 			);
 			path = myBLE;
+			sourceTree = "<group>";
+		};
+		052F5F1021F6C33200ED1C9E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				052F5F2421F8071600ED1C9E /* Assets.xcassets */,
+				052F5EFE21F6C1CE00ED1C9E /* AppDelegate.swift */,
+				052F5F0721F6C1D000ED1C9E /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		052F5F1921F8012300ED1C9E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				05C4FE0921F80D0B00DE54D7 /* BLEManager.swift */,
+				052F5F1B21F8014000ED1C9E /* Scanner.swift */,
+				052F5F1D21F8014A00ED1C9E /* Connector.swift */,
+				052F5F1F21F8019500ED1C9E /* Adapter.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		052F5F1A21F8012D00ED1C9E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				052F5F1521F6C37400ED1C9E /* ScanVC.swift */,
+				052F5F1721F6C37E00ED1C9E /* StatusVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		052F5F2121F803C000ED1C9E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				052F5F2221F803CE00ED1C9E /* DeviceStatus.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		05C4FE0B21F8162200DE54D7 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				05C4FE0C21F8162E00DE54D7 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		05C4FE0E21F818CE00DE54D7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				05C4FE0F21F818DC00DE54D7 /* LogUltils.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				052F5F0921F6C1D000ED1C9E /* LaunchScreen.storyboard in Resources */,
-				052F5F0621F6C1D000ED1C9E /* Assets.xcassets in Resources */,
+				052F5F2521F8071600ED1C9E /* Assets.xcassets in Resources */,
 				052F5F0421F6C1CE00ED1C9E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +207,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				052F5F0121F6C1CE00ED1C9E /* ViewController.swift in Sources */,
 				052F5EFF21F6C1CE00ED1C9E /* AppDelegate.swift in Sources */,
+				05C4FE0A21F80D0B00DE54D7 /* BLEManager.swift in Sources */,
+				05C4FE0D21F8162E00DE54D7 /* Constant.swift in Sources */,
+				052F5F2021F8019500ED1C9E /* Adapter.swift in Sources */,
+				052F5F2321F803CE00ED1C9E /* DeviceStatus.swift in Sources */,
+				052F5F1821F6C37E00ED1C9E /* StatusVC.swift in Sources */,
+				052F5F1C21F8014000ED1C9E /* Scanner.swift in Sources */,
+				052F5F1621F6C37400ED1C9E /* ScanVC.swift in Sources */,
+				052F5F1E21F8014A00ED1C9E /* Connector.swift in Sources */,
+				05C4FE1021F818DC00DE54D7 /* LogUltils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
