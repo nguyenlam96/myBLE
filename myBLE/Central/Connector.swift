@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 
 protocol ConnectorDelegate: NSObjectProtocol {
-    func handleServicesAndCharacteristicsReceved(serviesDict: [String:CBService], charDict: [String:CBCharacteristic] )
+    
 }
 
 class Connector: NSObject {
@@ -25,31 +25,26 @@ class Connector: NSObject {
     // MARK: - Connect funcs :
     func startConnect(to peripherial: CBPeripheral, options: [String:Any]? ) -> Bool { // options is nil
         LogUtils.LogTrace(type: .startFunc)
-        // ensure device state is disconnected
-        if (peripherial.state != .connected) || (peripherial.state != .connecting) {
-            BLEManager.shared.centralManager?.connect(peripherial, options: options)
-            LogUtils.LogTrace(type: .endFunc)
-            return true
-        } else {
-            LogUtils.LogDebug(type: .error, message: "Device is not on disconnected or disconnecting status")
-            LogUtils.LogTrace(type: .endFunc)
+        
+        guard peripherial.state == .disconnected else {
+            LogUtils.LogDebug(type: .info, message: "Device is not on disconnected state")
             return false
         }
+        CentralManager.shared.centralManager?.connect(peripherial, options: options)
+        return true
     }
     
     func disconnect() -> Bool {
         LogUtils.LogTrace(type: .startFunc)
         // ensure device is connected or connecting
-        let currentState = BLEManager.shared.connectedPeripherial?.state
-        if (currentState == .connected) || (currentState == .connecting) {
-            BLEManager.shared.centralManager?.cancelPeripheralConnection(BLEManager.shared.connectedPeripherial!)
-            LogUtils.LogTrace(type: .endFunc)
-            return true
-        } else {
-            LogUtils.LogDebug(type: .error, message: "Device is not on connected or connecting status")
-            LogUtils.LogTrace(type: .endFunc)
+        let connectStatus = CentralManager.shared.connectedPeripherial?.state
+        guard connectStatus == .connected else {
+            LogUtils.LogDebug(type: .warning, message: "Device is not connected state")
             return false
         }
+        _ = CentralManager.shared.centralManager?.cancelPeripheralConnection(CentralManager.shared.connectedPeripherial!)
+        LogUtils.LogTrace(type: .endFunc)
+        return true
     }
 }
 extension Connector {
@@ -61,7 +56,7 @@ extension Connector {
         if let discoveredServices = peripherial.services, discoveredServices.count > 0 {
             self.arrayOfDiscoveredServices = discoveredServices
             // start discover characteristic:
-            BLEManager.shared.connectedPeripherial?.discoverCharacteristics(nil, for: discoveredServices.first!) // characteristicUUID = nil
+            CentralManager.shared.connectedPeripherial?.discoverCharacteristics(nil, for: discoveredServices.first!) // characteristicUUID = nil
             
         } else {
             LogUtils.LogDebug(type: .error, message: "Peripherial doens't have services")
@@ -76,7 +71,7 @@ extension Connector {
         if arrayOfDiscoveredServices.count > 0 {
             // keep discover next services
             LogUtils.LogDebug(type: .info, message: "Discovering characteristic for the next services")
-            BLEManager.shared.connectedPeripherial?.discoverCharacteristics(nil, for: arrayOfDiscoveredServices.first!)
+            CentralManager.shared.connectedPeripherial?.discoverCharacteristics(nil, for: arrayOfDiscoveredServices.first!)
         } else {
             // save service and characteristic to list
             self.handleDiscoverServices(services: peripheral.services)
@@ -105,11 +100,7 @@ extension Connector {
             }
             
         }
-//        if (delegate != nil ) {
-//            delegate?.handleServicesAndCharacteristicsReceved(serviesDict: servicesDictionary, charDict: characteristicDictionary )
-//        } else {
-//            LogUtils.LogDebug(type: .error, message: "Delegate is nil")
-//        }
+
         LogUtils.LogTrace(type: .endFunc)
     }
     
