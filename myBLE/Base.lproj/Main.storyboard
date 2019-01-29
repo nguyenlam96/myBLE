@@ -85,15 +85,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRh-mH-mbj">
-                                <rect key="frame" x="167" y="203" width="40" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRh-mH-mbj">
+                                <rect key="frame" x="40" y="203" width="135" height="30"/>
                                 <state key="normal" title="SEND"/>
                                 <connections>
                                     <action selector="sendButtonPressed:" destination="0zY-KI-JyM" eventType="touchUpInside" id="e2u-tJ-l0p"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uH-cQ-ezR">
-                                <rect key="frame" x="100" y="241" width="175" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uH-cQ-ezR">
+                                <rect key="frame" x="40" y="241" width="235" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -110,30 +110,42 @@
                                     <action selector="stopScanButtonPressed:" destination="0zY-KI-JyM" eventType="touchUpInside" id="Bww-9e-Pus"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3c-Td-ELt">
+                                <rect key="frame" x="183" y="225" width="176" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="qU5-xa-z3O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="sCa-Tb-YBj" firstAttribute="trailing" secondItem="QRh-mH-mbj" secondAttribute="trailing" constant="168" id="0H6-1p-WPu"/>
+                            <constraint firstItem="sCa-Tb-YBj" firstAttribute="trailing" secondItem="QRh-mH-mbj" secondAttribute="trailing" constant="200" id="0H6-1p-WPu"/>
                             <constraint firstAttribute="bottom" secondItem="gno-na-4XK" secondAttribute="bottom" id="CDx-Ss-931"/>
                             <constraint firstItem="gno-na-4XK" firstAttribute="top" secondItem="gKm-2f-4Vk" secondAttribute="bottom" constant="200" id="EhJ-0s-Keh"/>
+                            <constraint firstItem="gno-na-4XK" firstAttribute="top" secondItem="h3c-Td-ELt" secondAttribute="bottom" constant="12" id="Mfw-w3-NHl"/>
                             <constraint firstItem="plm-Js-oCC" firstAttribute="leading" secondItem="sCa-Tb-YBj" secondAttribute="leading" id="OEi-XA-BwE"/>
                             <constraint firstItem="gKm-2f-4Vk" firstAttribute="top" secondItem="sCa-Tb-YBj" secondAttribute="top" constant="20" id="Q19-VR-tiC"/>
                             <constraint firstItem="5uH-cQ-ezR" firstAttribute="top" secondItem="QRh-mH-mbj" secondAttribute="bottom" constant="8" id="UBb-z9-U3b"/>
                             <constraint firstItem="kui-ZV-R3z" firstAttribute="top" secondItem="gKm-2f-4Vk" secondAttribute="bottom" constant="28" id="Y3c-Sh-ddJ"/>
                             <constraint firstItem="sCa-Tb-YBj" firstAttribute="trailing" secondItem="Pdw-pK-XgK" secondAttribute="trailing" constant="16" id="YUJ-5b-jXB"/>
                             <constraint firstItem="sCa-Tb-YBj" firstAttribute="trailing" secondItem="plm-Js-oCC" secondAttribute="trailing" id="ZPK-ZQ-XDx"/>
+                            <constraint firstItem="sCa-Tb-YBj" firstAttribute="trailing" secondItem="h3c-Td-ELt" secondAttribute="trailing" constant="16" id="dfd-ZI-Bfe"/>
                             <constraint firstItem="gno-na-4XK" firstAttribute="trailing" secondItem="sCa-Tb-YBj" secondAttribute="trailing" id="efq-a1-l9y"/>
                             <constraint firstItem="Pdw-pK-XgK" firstAttribute="top" secondItem="gKm-2f-4Vk" secondAttribute="bottom" constant="8" id="fpA-82-H0Z"/>
                             <constraint firstItem="XIo-6K-C5w" firstAttribute="top" secondItem="kui-ZV-R3z" secondAttribute="bottom" constant="27" id="keQ-QU-HRO"/>
                             <constraint firstItem="gKm-2f-4Vk" firstAttribute="leading" secondItem="sCa-Tb-YBj" secondAttribute="leading" constant="16" id="kh1-VG-gbK"/>
                             <constraint firstItem="plm-Js-oCC" firstAttribute="top" secondItem="gno-na-4XK" secondAttribute="bottom" constant="10" id="l6o-7a-UqN"/>
-                            <constraint firstItem="QRh-mH-mbj" firstAttribute="leading" secondItem="sCa-Tb-YBj" secondAttribute="leading" constant="167" id="lC5-3v-a8v"/>
+                            <constraint firstItem="QRh-mH-mbj" firstAttribute="leading" secondItem="sCa-Tb-YBj" secondAttribute="leading" constant="40" id="lC5-3v-a8v"/>
                             <constraint firstItem="kui-ZV-R3z" firstAttribute="centerX" secondItem="AAd-x0-4pa" secondAttribute="centerX" id="mNq-UM-grn"/>
                             <constraint firstItem="sCa-Tb-YBj" firstAttribute="trailing" secondItem="XIo-6K-C5w" secondAttribute="trailing" constant="40" id="nsc-LJ-aZt"/>
                             <constraint firstItem="sCa-Tb-YBj" firstAttribute="trailing" secondItem="5uH-cQ-ezR" secondAttribute="trailing" constant="100" id="oG3-ys-QOU"/>
                             <constraint firstItem="QRh-mH-mbj" firstAttribute="top" secondItem="XIo-6K-C5w" secondAttribute="bottom" constant="8" id="pYa-68-3pV"/>
                             <constraint firstItem="gno-na-4XK" firstAttribute="leading" secondItem="sCa-Tb-YBj" secondAttribute="leading" id="qCM-yf-tZm"/>
-                            <constraint firstItem="5uH-cQ-ezR" firstAttribute="leading" secondItem="sCa-Tb-YBj" secondAttribute="leading" constant="100" id="smv-bQ-sga"/>
+                            <constraint firstItem="h3c-Td-ELt" firstAttribute="leading" secondItem="QRh-mH-mbj" secondAttribute="trailing" constant="8" id="r6M-bB-lHq"/>
+                            <constraint firstItem="5uH-cQ-ezR" firstAttribute="leading" secondItem="sCa-Tb-YBj" secondAttribute="leading" constant="40" id="smv-bQ-sga"/>
                             <constraint firstItem="XIo-6K-C5w" firstAttribute="leading" secondItem="sCa-Tb-YBj" secondAttribute="leading" constant="40" id="to4-sN-DPh"/>
                             <constraint firstItem="sCa-Tb-YBj" firstAttribute="trailing" secondItem="gKm-2f-4Vk" secondAttribute="trailing" constant="16" id="zxS-Rf-g8d"/>
                         </constraints>
@@ -143,6 +155,7 @@
                     <connections>
                         <outlet property="connectingIndicator" destination="kui-ZV-R3z" id="aRf-GS-QcD"/>
                         <outlet property="messageTextField" destination="XIo-6K-C5w" id="yxw-mo-vRj"/>
+                        <outlet property="receiveMessage" destination="h3c-Td-ELt" id="Uhh-Jf-BOv"/>
                         <outlet property="scanButtonOutlet" destination="gKm-2f-4Vk" id="l3r-R1-KIT"/>
                         <outlet property="sendStatusLabel" destination="5uH-cQ-ezR" id="rbK-mW-wCo"/>
                         <outlet property="stopScanButtonOutlet" destination="Pdw-pK-XgK" id="0ue-eQ-u6D"/>

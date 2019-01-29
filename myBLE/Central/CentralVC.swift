@@ -21,10 +21,26 @@ class CentralVC: BaseVC {
     @IBOutlet weak var connectingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendStatusLabel: UILabel!
+    @IBOutlet weak var receiveMessage: UILabel!
     
     
     // MARK: - ViewLifeCycle:
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveMessage(notification:)), name: NSNotification.Name(rawValue: NotificationName.receiveMessage.rawValue), object: nil)
+    }
+    @objc func receiveMessage(notification: Notification) {
+        LogUtils.LogTrace(type: .startFunc)
+        if let message = notification.userInfo!["message"] as? String {
+            self.receiveMessage.text = message
+            LogUtils.LogTrace(type: .endFunc)
+        } else {
+            LogUtils.LogDebug(type: .warning, message: "message is nil")
+            LogUtils.LogTrace(type: .endFunc)
+        }
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -32,6 +48,7 @@ class CentralVC: BaseVC {
         tableView.tableFooterView = UIView()
 //        self.dismissKeyboardWhenTappingArround()
         sendStatusLabel.text = ""
+        receiveMessage.text = ""
         connectingIndicator.stopAnimating()
         stopScanButtonOutlet.isHidden = true
         CentralManager.shared.delegate = self
@@ -145,7 +162,8 @@ extension CentralVC {
     func didConnect(peripheral: CBPeripheral) {
         LogUtils.LogTrace(type: .startFunc)
         self.connectingIndicator.stopAnimating()
-        CentralManager.shared.connectedPeripherial = peripheral // set connected peripheral
+//        CentralManager.shared.connectedPeripherial = peripheral // set connected peripheral
+        let serviceToDiscover = CBUUID(string: messengerService.serviceUUID.rawValue)
         CentralManager.shared.connectedPeripherial?.discoverServices(nil)
         self.tableView.reloadData()
         LogUtils.LogTrace(type: .endFunc)

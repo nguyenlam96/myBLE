@@ -28,11 +28,11 @@ class CentralManager: NSObject {
     static let shared = CentralManager()
     weak var delegate: CentralManagerDelegate?
 
-    let scanner = Scanner()
-    let connector = Connector()
+//    let scanner = Scanner()
+//    let connector = Connector()
     var centralManager: CBCentralManager?
     var connectedPeripherial: CBPeripheral?
-    
+    var discoveredChacteristics: [String:CBCharacteristic] = [:]
     override init() {
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: nil)
@@ -59,7 +59,8 @@ class CentralManager: NSObject {
         }
         // everything is ok, do scan:
         let scanOptions = [CBCentralManagerScanOptionAllowDuplicatesKey: false]
-        self.centralManager?.scanForPeripherals(withServices: nil, options: scanOptions) // scan all peripherial
+        let serviceToScanUUID = CBUUID(string: messengerService.serviceUUID.rawValue)
+        self.centralManager?.scanForPeripherals(withServices: [serviceToScanUUID], options: scanOptions) // scan all peripherial
         return true
     }
     
@@ -99,27 +100,13 @@ class CentralManager: NSObject {
         }
 
         let data = value.data(using: String.Encoding.utf8)
-
-        if let services = connectedPeripherial?.services {
-            for service in services {
-                if service.uuid == messagerServiceUUID {
-                    for characteristic in service.characteristics! {
-                        if characteristic.uuid == messageContentCharacteristicUUID {
-                            // write value:
-                            self.connectedPeripherial?.writeValue(data!, for: characteristic, type: CBCharacteristicWriteType.withResponse)
-                            return true
-                        } else {
-                            LogUtils.LogDebug(type: .error, message: "can't find messageContentCharacteristicUUID")
-                        }
-                    }
-                } else {
-                    LogUtils.LogDebug(type: .error, message: "can't find messagerServiceUUID")
-                }
-            }
+        if let data = data {
+            self.connectedPeripherial?.writeValue(data, for: self.discoveredChacteristics[messengerService.contentCharacteristicUUID.rawValue]!, type: CBCharacteristicWriteType.withResponse)
         } else {
-            LogUtils.LogDebug(type: .error, message: "can't find services in connectedPeripheral")
+            LogUtils.LogDebug(type: .error, message: "Data is nil")
         }
         
+        LogUtils.LogTrace(type: .endFunc)
         return false
     }
 
@@ -142,10 +129,11 @@ extension CentralManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         LogUtils.LogTrace(type: .startFunc)
         // ensure peripherial have name
-        if (peripheral.name == nil ) {
-            return
-        }
-
+//        if (peripheral.name == nil ) {
+//            return
+//        }
+        print("peripheral servies: \(peripheral.services)")
+        print("advertisementData: \(advertisementData)")
         if (delegate == nil) {
             LogUtils.LogDebug(type: .error, message: "Delegate is nil")
             LogUtils.LogTrace(type: .endFunc)
@@ -166,7 +154,10 @@ extension CentralManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         
         LogUtils.LogTrace(type: .startFunc)
-
+        self.connectedPeripherial = peripheral
+        self.connectedPeripherial?.delegate = self
+        print("connectedPeripheral: \(connectedPeripherial ?? nil)")
+        
         if (delegate == nil) {
             LogUtils.LogDebug(type: .error, message: "Delegate is nil")
             LogUtils.LogTrace(type: .endFunc)
@@ -180,6 +171,21 @@ extension CentralManager: CBCentralManagerDelegate {
             LogUtils.LogTrace(type: .endFunc)
             return
         }
+
+//        let serviceToDiscoverUUID = CBUUID(string: messengerService.serviceUUID.rawValue)
+//        if let services = connectedPeripherial?.services {
+//            for service in services {
+//                if service.uuid == serviceToDiscoverUUID {
+//                    self.connectedPeripherial?.discoverServices([service.uuid])
+//                } else {
+//                    print("serviceUUID found but not match: \(service.uuid)")
+//                }
+//            }
+//        } else {
+//            LogUtils.LogDebug(type: .error, message: "Services of connectedPeripheral is nil")
+//        }
+        LogUtils.LogTrace(type: .endFunc)
+        
 
     }
     
@@ -205,11 +211,23 @@ extension CentralManager: CBCentralManagerDelegate {
         }
     }
     
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        LogUtils.LogTrace(type: .startFunc)
+        guard error == nil else {
+            LogUtils.LogDebug(type: .error, message: error!.localizedDescription)
+            return
+        }
+        self.centralManager?.cancelPeripheralConnection(peripheral)
+        LogUtils.LogTrace(type: .endFunc)
+    }
+    
 }
     
 
 // MARK: - Peripheral Delegate :
 extension CentralManager: CBPeripheralDelegate {
+    
+    
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         LogUtils.LogTrace(type: .startFunc)
@@ -217,19 +235,25 @@ extension CentralManager: CBPeripheralDelegate {
             LogUtils.LogDebug(type: .error, message: error!.localizedDescription)
             return
         }
-        if (delegate == nil) {
-            LogUtils.LogDebug(type: .error, message: "Delegate is nil")
-            LogUtils.LogTrace(type: .endFunc)
-            return
-        } else if !((delegate?.responds(to: #selector(CentralManagerDelegate.didDiscoverServices(peripheral:))))!)  {
-            LogUtils.LogDebug(type: .error, message: "Delegate is not response")
-            LogUtils.LogTrace(type: .endFunc)
-            return
-        } else {
-            delegate?.didDiscoverServices!(peripheral: peripheral)
-            LogUtils.LogTrace(type: .endFunc)
-            return
+        print("Services discovered: ")
+        for service in (connectedPeripherial?.services)! {
+            print(service)
+            connectedPeripherial?.discoverCharacteristics(nil, for: service)
         }
+        LogUtils.LogTrace(type: .endFunc)
+//        if (delegate == nil) {
+//            LogUtils.LogDebug(type: .error, message: "Delegate is nil")
+//            LogUtils.LogTrace(type: .endFunc)
+//            return
+//        } else if !((delegate?.responds(to: #selector(CentralManagerDelegate.didDiscoverServices(peripheral:))))!)  {
+//            LogUtils.LogDebug(type: .error, message: "Delegate is not response")
+//            LogUtils.LogTrace(type: .endFunc)
+//            return
+//        } else {
+//            delegate?.didDiscoverServices!(peripheral: peripheral)
+//            LogUtils.LogTrace(type: .endFunc)
+//            return
+//        }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -238,19 +262,28 @@ extension CentralManager: CBPeripheralDelegate {
             LogUtils.LogDebug(type: .error, message: error!.localizedDescription)
             return
         }
-        if (delegate == nil) {
-            LogUtils.LogDebug(type: .error, message: "Delegate is nil")
-            LogUtils.LogTrace(type: .endFunc)
-            return
-        } else if !((delegate?.responds(to: #selector(CentralManagerDelegate.didDiscoverCharacteristicsFor(peripheral:service:))))!)  {
-            LogUtils.LogDebug(type: .error, message: "Delegate is not response")
-            LogUtils.LogTrace(type: .endFunc)
-            return
-        } else {
-            delegate?.didDiscoverCharacteristicsFor!(peripheral: peripheral, service: service)
-            LogUtils.LogTrace(type: .endFunc)
-            return
+        
+        for char in service.characteristics! {
+            if char.properties.contains(CBCharacteristicProperties.notify) {
+                self.connectedPeripherial?.setNotifyValue(true, for: char)
+            }
+            self.discoveredChacteristics[char.uuid.uuidString] = char
+            print(char)
         }
+        LogUtils.LogTrace(type: .endFunc)
+//        if (delegate == nil) {
+//            LogUtils.LogDebug(type: .error, message: "Delegate is nil")
+//            LogUtils.LogTrace(type: .endFunc)
+//            return
+//        } else if !((delegate?.responds(to: #selector(CentralManagerDelegate.didDiscoverCharacteristicsFor(peripheral:service:))))!)  {
+//            LogUtils.LogDebug(type: .error, message: "Delegate is not response")
+//            LogUtils.LogTrace(type: .endFunc)
+//            return
+//        } else {
+//            delegate?.didDiscoverCharacteristicsFor!(peripheral: peripheral, service: service)
+//            LogUtils.LogTrace(type: .endFunc)
+//            return
+//        }
     }
     
     
@@ -262,6 +295,8 @@ extension CentralManager: CBPeripheralDelegate {
 //        }
         if error != nil {
             LogUtils.LogDebug(type: .error, message: error!.localizedDescription)
+            LogUtils.LogTrace(type: .endFunc)
+            return
         }
         if (delegate == nil) {
             LogUtils.LogDebug(type: .error, message: "Delegate is nil")
@@ -277,6 +312,34 @@ extension CentralManager: CBPeripheralDelegate {
             return
         }
         
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        
+        LogUtils.LogTrace(type: .startFunc)
+        guard error == nil else {
+            LogUtils.LogDebug(type: .error, message: error!.localizedDescription)
+            LogUtils.LogTrace(type: .endFunc)
+            return
+        }
+        if characteristic.uuid.uuidString.lowercased() == messengerService.sendMessageDataCharacteristicUUID.rawValue.lowercased() {
+            if let value = characteristic.value {
+                let message = String(data: value, encoding: String.Encoding.utf8)
+                if let message = message {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationName.receiveMessage.rawValue), object: nil, userInfo: ["message":message])
+                    LogUtils.LogTrace(type: .endFunc)
+                } else {
+                    LogUtils.LogDebug(type: .warning, message: "Message is nil")
+                    LogUtils.LogTrace(type: .endFunc)
+                }
+                
+            } else {
+                LogUtils.LogDebug(type: .error, message: "characteristic's value is nil")
+            }
+        } else {
+            LogUtils.LogDebug(type: .warning, message: "no characteristic match")
+        }
+        LogUtils.LogTrace(type: .endFunc)
     }
     
     

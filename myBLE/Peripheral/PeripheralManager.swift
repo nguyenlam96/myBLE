@@ -26,8 +26,8 @@ class PeriperalManager: NSObject {
         super.init()
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
         
-        messagerService = CBMutableService(type: CBUUID(string: message.serviceUUID.rawValue), primary: true)
-        messageContentCharacteristic = CBMutableCharacteristic(type: CBUUID(string: message.contentCharacteristicUUID.rawValue), properties: .read, value: nil, permissions: CBAttributePermissions.writeable)
+        messagerService = CBMutableService(type: CBUUID(string: messengerService.serviceUUID.rawValue), primary: true)
+        messageContentCharacteristic = CBMutableCharacteristic(type: CBUUID(string: messengerService.contentCharacteristicUUID.rawValue), properties: .read, value: nil, permissions: CBAttributePermissions.writeable)
         messagerService?.characteristics = [messageContentCharacteristic] as! [CBCharacteristic]
         
         peripheralManager?.add(messagerService!)
