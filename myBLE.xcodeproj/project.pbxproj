@@ -7,13 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		051266C021FC307B00E38325 /* PeripheralVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051266BF21FC307B00E38325 /* PeripheralVC.swift */; };
-		051266C221FC30D700E38325 /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051266C121FC30D700E38325 /* PeripheralManager.swift */; };
 		052F5EFF21F6C1CE00ED1C9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5EFE21F6C1CE00ED1C9E /* AppDelegate.swift */; };
 		052F5F0421F6C1CE00ED1C9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052F5F0221F6C1CE00ED1C9E /* Main.storyboard */; };
 		052F5F0921F6C1D000ED1C9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052F5F0721F6C1D000ED1C9E /* LaunchScreen.storyboard */; };
 		052F5F1621F6C37400ED1C9E /* CentralVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F1521F6C37400ED1C9E /* CentralVC.swift */; };
-		052F5F1E21F8014A00ED1C9E /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F1D21F8014A00ED1C9E /* Connector.swift */; };
 		052F5F2521F8071600ED1C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052F5F2421F8071600ED1C9E /* Assets.xcassets */; };
 		05C4FE0A21F80D0B00DE54D7 /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4FE0921F80D0B00DE54D7 /* CentralManager.swift */; };
 		05C4FE1021F818DC00DE54D7 /* LogUltils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4FE0F21F818DC00DE54D7 /* LogUltils.swift */; };
@@ -23,15 +20,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		051266BF21FC307B00E38325 /* PeripheralVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralVC.swift; sourceTree = "<group>"; };
-		051266C121FC30D700E38325 /* PeripheralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
 		052F5EFB21F6C1CE00ED1C9E /* myBLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myBLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		052F5EFE21F6C1CE00ED1C9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		052F5F0321F6C1CE00ED1C9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		052F5F0821F6C1D000ED1C9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		052F5F0A21F6C1D000ED1C9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		052F5F1521F6C37400ED1C9E /* CentralVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralVC.swift; sourceTree = "<group>"; };
-		052F5F1D21F8014A00ED1C9E /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		052F5F2421F8071600ED1C9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05C4FE0921F80D0B00DE54D7 /* CentralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralManager.swift; sourceTree = "<group>"; };
 		05C4FE0F21F818DC00DE54D7 /* LogUltils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUltils.swift; sourceTree = "<group>"; };
@@ -56,18 +50,8 @@
 			children = (
 				052F5F1521F6C37400ED1C9E /* CentralVC.swift */,
 				05C4FE0921F80D0B00DE54D7 /* CentralManager.swift */,
-				052F5F1D21F8014A00ED1C9E /* Connector.swift */,
 			);
 			path = Central;
-			sourceTree = "<group>";
-		};
-		051266BC21FC300B00E38325 /* Peripheral */ = {
-			isa = PBXGroup;
-			children = (
-				051266BF21FC307B00E38325 /* PeripheralVC.swift */,
-				051266C121FC30D700E38325 /* PeripheralManager.swift */,
-			);
-			path = Peripheral;
 			sourceTree = "<group>";
 		};
 		052F5EF221F6C1CE00ED1C9E = {
@@ -94,7 +78,6 @@
 				05FC796B21FCB54900D08D44 /* Notifications.swift */,
 				05D5849E21FEEEC800D8EB5B /* ServicesDefine.swift */,
 				051266BB21FC300000E38325 /* Central */,
-				051266BC21FC300B00E38325 /* Peripheral */,
 				052F5F1021F6C33200ED1C9E /* Supporting Files */,
 				052F5F0221F6C1CE00ED1C9E /* Main.storyboard */,
 				052F5F0A21F6C1D000ED1C9E /* Info.plist */,
@@ -195,11 +178,8 @@
 				052F5EFF21F6C1CE00ED1C9E /* AppDelegate.swift in Sources */,
 				05D5849F21FEEEC800D8EB5B /* ServicesDefine.swift in Sources */,
 				05C4FE1421F9AE7000DE54D7 /* BaseVC.swift in Sources */,
-				051266C021FC307B00E38325 /* PeripheralVC.swift in Sources */,
 				05C4FE0A21F80D0B00DE54D7 /* CentralManager.swift in Sources */,
 				052F5F1621F6C37400ED1C9E /* CentralVC.swift in Sources */,
-				051266C221FC30D700E38325 /* PeripheralManager.swift in Sources */,
-				052F5F1E21F8014A00ED1C9E /* Connector.swift in Sources */,
 				05C4FE1021F818DC00DE54D7 /* LogUltils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

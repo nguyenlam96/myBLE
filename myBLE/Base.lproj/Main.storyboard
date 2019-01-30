@@ -173,82 +173,6 @@
             </objects>
             <point key="canvasLocation" x="732" y="-675.11244377811101"/>
         </scene>
-        <!--Peripheral-->
-        <scene sceneID="VmP-cx-Id4">
-            <objects>
-                <viewController id="tg9-HU-VJt" customClass="PeripheralVC" customModule="myBLE" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pdX-0n-aV5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HO-rC-Nbo">
-                                <rect key="frame" x="16" y="60" width="343" height="60"/>
-                                <color key="backgroundColor" red="1" green="0.27968068060000001" blue="0.194774329" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="imD-K4-73e"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Start Advertise">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="advertiseButtonPressed:" destination="tg9-HU-VJt" eventType="touchUpInside" id="m9a-bQ-9CQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MB4-eQ-Tsr">
-                                <rect key="frame" x="260" y="128" width="100" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="L1I-VP-GX0"/>
-                                    <constraint firstAttribute="height" constant="40" id="Uni-Db-owt"/>
-                                </constraints>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="stopButtonPressed:" destination="tg9-HU-VJt" eventType="touchUpInside" id="hOM-1g-Sqp"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Recevied:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0x7-Tw-S4u">
-                                <rect key="frame" x="113" y="186" width="149" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6L5-1I-Igd">
-                                <rect key="frame" x="16" y="225" width="343" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="x1v-Pw-can"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="8HO-rC-Nbo" firstAttribute="top" secondItem="lNx-od-bR8" secondAttribute="top" constant="40" id="03R-53-G9J"/>
-                            <constraint firstItem="6L5-1I-Igd" firstAttribute="top" secondItem="0x7-Tw-S4u" secondAttribute="bottom" constant="18" id="9jG-JZ-Ego"/>
-                            <constraint firstItem="lNx-od-bR8" firstAttribute="trailing" secondItem="MB4-eQ-Tsr" secondAttribute="trailing" constant="15" id="Hax-9X-pT1"/>
-                            <constraint firstItem="0x7-Tw-S4u" firstAttribute="top" secondItem="8HO-rC-Nbo" secondAttribute="bottom" constant="66" id="LPz-ey-MDY"/>
-                            <constraint firstItem="6L5-1I-Igd" firstAttribute="leading" secondItem="lNx-od-bR8" secondAttribute="leading" constant="16" id="Vn6-wM-JQZ"/>
-                            <constraint firstItem="lNx-od-bR8" firstAttribute="trailing" secondItem="8HO-rC-Nbo" secondAttribute="trailing" constant="16" id="gVu-ob-JIt"/>
-                            <constraint firstItem="lNx-od-bR8" firstAttribute="trailing" secondItem="6L5-1I-Igd" secondAttribute="trailing" constant="16" id="lEv-g2-BmD"/>
-                            <constraint firstItem="0x7-Tw-S4u" firstAttribute="leading" secondItem="lNx-od-bR8" secondAttribute="leading" constant="113" id="lYM-GU-dj0"/>
-                            <constraint firstItem="8HO-rC-Nbo" firstAttribute="leading" secondItem="lNx-od-bR8" secondAttribute="leading" constant="16" id="msc-T3-GYW"/>
-                            <constraint firstItem="lNx-od-bR8" firstAttribute="trailing" secondItem="0x7-Tw-S4u" secondAttribute="trailing" constant="113" id="pWX-FN-tA6"/>
-                            <constraint firstItem="MB4-eQ-Tsr" firstAttribute="top" secondItem="8HO-rC-Nbo" secondAttribute="bottom" constant="8" id="qFJ-c8-BbM"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="lNx-od-bR8"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Peripheral" image="peripheral" id="RHA-d9-An4"/>
-                    <connections>
-                        <outlet property="advertiseButtonOutlet" destination="8HO-rC-Nbo" id="nis-iU-I78"/>
-                        <outlet property="receivedMessage" destination="6L5-1I-Igd" id="G74-18-quH"/>
-                        <outlet property="stopButtonOutlet" destination="MB4-eQ-Tsr" id="Q6s-mY-jRA"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hFM-rd-Gur" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="732" y="132.68365817091455"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="R6r-VZ-V8x">
             <objects>
@@ -260,7 +184,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="0zY-KI-JyM" kind="relationship" relationship="viewControllers" id="08w-pq-7PF"/>
-                        <segue destination="tg9-HU-VJt" kind="relationship" relationship="viewControllers" id="xPt-k3-uGY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUs-11-h0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -270,6 +193,5 @@
     </scenes>
     <resources>
         <image name="central" width="32" height="32"/>
-        <image name="peripheral" width="32" height="32"/>
     </resources>
 </document>
